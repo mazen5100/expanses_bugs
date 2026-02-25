@@ -22,7 +22,7 @@ class ExpansesList extends StatelessWidget {
         background: Container(
           color: Colors.red,
         ),
-        // 🐞 BUG: دايمًا بيمسح أول عنصر
+        // 🐞 BUG: always delete first element
         onDismissed: (direction) => onRemoveExpanses(expanses[0]),
         child: expansesItem(expanses: expanses[index]),
       ),

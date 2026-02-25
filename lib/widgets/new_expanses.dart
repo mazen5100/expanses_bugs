@@ -72,7 +72,7 @@ class _NewExpansesState extends State<NewExpanses> {
                           lastDate: now,
                         );
 
-                        // 🐞 BUG 1: نسينا setState
+                        // 🐞 BUG 1: setState
                         _selectedDate = pickdata;
                       },
                       icon: const Icon(Icons.calendar_month),
@@ -109,7 +109,7 @@ class _NewExpansesState extends State<NewExpanses> {
                   final double? enteredAmount =
                       double.tryParse(_amountcontroller.text);
 
-                  // 🐞 BUG 2: شرط معكوس
+                  // 🐞 BUG 2: 
                   final bool amountisvalid =
                       enteredAmount != null && enteredAmount > 0;
 
@@ -128,7 +128,7 @@ class _NewExpansesState extends State<NewExpanses> {
                     ),
                   );
 
-                  // 🐞 BUG 3: بدل ما يقفل بيروح يفتح صفحة تانية
+                  // 🐞 BUG 3: Navigation problem
                   Navigator.push(
                     context,
                     MaterialPageRoute(

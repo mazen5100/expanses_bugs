@@ -38,7 +38,7 @@ class _ExpansesState extends State<Expanses> {
       category: Category.travel,
     ),
   ];
-
+    // 🐞 BUG 4: Missing setState
   void _addExpanses(Expansesmodel expanses) {
     _registeredExpanses.add(expanses);
   }

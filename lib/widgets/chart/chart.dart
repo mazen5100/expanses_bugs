@@ -53,6 +53,7 @@ class Chart extends StatelessWidget {
                   ChartBar(
                     fill: bucket.totalAmount == 0
                         ? 0
+                        // 🐞 BUG: wronge divesion 
                         :maxTotalAmount / bucket.totalAmount,
                   ),
               ],

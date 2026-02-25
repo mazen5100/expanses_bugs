@@ -21,6 +21,7 @@ class expansesItem extends StatelessWidget {
                 color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
+              // 🐞 BUG: alawys icon money 
               child: Icon(
                 Icons.money,
                 color: Theme.of(context).colorScheme.primary,
