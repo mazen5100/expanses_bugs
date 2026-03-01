@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:expenses_app/Models/expanses.dart';
 import 'package:expenses_app/widgets/expanses%20list/expanses_item.dart';
 import 'package:flutter/material.dart';
+
 class ExpansesList extends StatelessWidget {
   const ExpansesList({
     super.key,
@@ -19,11 +20,9 @@ class ExpansesList extends StatelessWidget {
       itemCount: expanses.length,
       itemBuilder: (context, index) => Dismissible(
         key: ValueKey(expanses[index]),
-        background: Container(
-          color: Colors.red,
-        ),
+        background: Container(color: Colors.red),
         // 🐞 BUG: always delete first element
-        onDismissed: (direction) => onRemoveExpanses(expanses[0]),
+        onDismissed: (direction) => onRemoveExpanses(expanses[index]),
         child: expansesItem(expanses: expanses[index]),
       ),
     );

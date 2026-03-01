@@ -7,6 +7,12 @@ final formatter = DateFormat.yMd();
 class expansesItem extends StatelessWidget {
   const expansesItem({super.key, required this.expanses});
   final Expansesmodel expanses;
+  static const Map<Category, IconData> categoryIcons = {
+  Category.food: Icons.restaurant,
+  Category.leisure: Icons.movie,
+  Category.travel: Icons.flight,
+  Category.work: Icons.work,
+};
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -21,9 +27,9 @@ class expansesItem extends StatelessWidget {
                 color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
                 borderRadius: BorderRadius.circular(12),
               ),
-              // 🐞 BUG: alawys icon money 
+              // 🐞 BUG: alawys icon money
               child: Icon(
-                Icons.money,
+                categoryIcons[expanses.category] ?? Icons.help_outline,
                 color: Theme.of(context).colorScheme.primary,
               ),
             ),
