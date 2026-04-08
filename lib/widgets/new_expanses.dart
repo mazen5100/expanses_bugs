@@ -62,8 +62,11 @@ class _NewExpansesState extends State<NewExpanses> {
                     IconButton(
                       onPressed: () async {
                         final now = DateTime.now();
-                        final firstDate =
-                            DateTime(now.year - 1, now.month, now.day);
+                        final firstDate = DateTime(
+                          now.year - 1,
+                          now.month,
+                          now.day,
+                        );
 
                         final pickdata = await showDatePicker(
                           context: context,
@@ -73,7 +76,9 @@ class _NewExpansesState extends State<NewExpanses> {
                         );
 
                         // 🐞 BUG 1: setState
-                        _selectedDate = pickdata;
+                        setState(() {
+                          _selectedDate = pickdata;
+                        });
                       },
                       icon: const Icon(Icons.calendar_month),
                     ),
@@ -106,15 +111,16 @@ class _NewExpansesState extends State<NewExpanses> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  final double? enteredAmount =
-                      double.tryParse(_amountcontroller.text);
+                  final double? enteredAmount = double.tryParse(
+                    _amountcontroller.text,
+                  );
 
-                  // 🐞 BUG 2: 
+                  // 🐞 BUG 2:
                   final bool amountisvalid =
                       enteredAmount != null && enteredAmount > 0;
 
                   if (_titlecontroller.text.trim().isEmpty ||
-                      amountisvalid ||
+                      !amountisvalid ||
                       _selectedDate == null) {
                     return;
                   }
@@ -129,14 +135,7 @@ class _NewExpansesState extends State<NewExpanses> {
                   );
 
                   // 🐞 BUG 3: Navigation problem
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (ctx) => const Scaffold(
-                        body: Center(child: Text("Wrong Navigation 😅")),
-                      ),
-                    ),
-                  );
+                  Navigator.pop(context);
                 },
                 child: const Text('Save Expanses'),
               ),
